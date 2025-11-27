@@ -1,5 +1,5 @@
 ---
-title: "Session 01 – Indonesian GDP (World Bank WDI)"
+title: "Session 02 – Vietnamn GDP (World Bank WDI)"
 output:
   html_document:
     toc: true
@@ -15,7 +15,7 @@ date: "`r Sys.Date()`"
 
 ## GDP Indicator Overview
 
-In this session we use World Bank WDI indicators for Indonesia (`IDN`), including:
+In this session we use World Bank WDI indicators for Vietnam (`VNM`), including:
 
 - **NY.GDP.MKTP.KD** – GDP (constant 2015 US$)  
 - **NY.GDP.MKTP.KD.ZG** – GDP growth (annual %)
@@ -30,65 +30,65 @@ You can explore GDP visually using the World Bank dashboard:
 
 ## Loading Packages and Downloading Data
 
-```{r setup_INA, message=FALSE, warning=FALSE}
+```{r setup_VNM, message=FALSE, warning=FALSE}
 # install.packages("WDI") # run once in the Console if not installed
 library(WDI)
 ```
 
-```{r download_gdp_INA}
-# Download the full time series of Indonesian GDP:
+```{r download_gdp_VNM}
+# Download the full time series of Vietnamn GDP:
 #   - NY.GDP.MKTP.KD    : GDP (constant 2015 US$)
 #   - NY.GDP.MKTP.KD.ZG : GDP growth (annual %)
-gdp_idn <- WDI(
-  country   = "IDN",
+gdp_VNM <- WDI(
+  country   = "VNM",
   indicator = c("NY.GDP.MKTP.KD", "NY.GDP.MKTP.KD.ZG")
 )
 
 # Sort from earliest to latest year
-gdp_idn <- gdp_idn[order(gdp_idn$year), ]
+gdp_VNM <- gdp_VNM[order(gdp_VNM$year), ]
 
 # Preview the first and last observations
-head(gdp_idn)
-tail(gdp_idn)
+head(gdp_VNM)
+tail(gdp_VNM)
 ```
 
 ## Checking the Data Structure
 
-```{r structure_gdp_INA}
-str(gdp_idn)
+```{r structure_gdp_VNM}
+str(gdp_VNM)
 ```
 
 ## Searching for GDP-Related Indicators
 
-```{r search_indicators_INA, message=FALSE}
+```{r search_indicators_VNM, message=FALSE}
 # Example: search WDI for indicators containing the word "growth"
 # ind_growth <- WDIsearch("growth")
 # head(ind_growth, 100)
 ```
 
-## Plotting Indonesian GDP (constant 2015 US$)
+## Plotting Vietnamn GDP (constant 2015 US$)
 
-```{r plot_gdp_level_INA, echo=FALSE}
+```{r plot_gdp_level_VNM, echo=FALSE}
 plot(
-  gdp_idn$year,
-  gdp_idn$NY.GDP.MKTP.KD,
+  gdp_VNM$year,
+  gdp_VNM$NY.GDP.MKTP.KD,
   type = "l",
   xlab = "Year",
   ylab = "GDP (constant 2015 US$)",
-  main = "Indonesian GDP (constant 2015 US$)"
+  main = "Vietnamn GDP (constant 2015 US$)"
 )
 ```
 
-## Plotting Indonesian GDP Growth (annual %)
+## Plotting Vietnamn GDP Growth (annual %)
 
-```{r plot_gdp_growth_INA, echo=FALSE}
+```{r plot_gdp_growth_VNM, echo=FALSE}
 plot(
-  gdp_idn$year,
-  gdp_idn$NY.GDP.MKTP.KD.ZG,
+  gdp_VNM$year,
+  gdp_VNM$NY.GDP.MKTP.KD.ZG,
   type = "l",
   xlab = "Year",
   ylab = "GDP growth (annual %)",
-  main = "Indonesian GDP Growth (annual %)"
+  main = "Vietnamn GDP Growth (annual %)"
 )
 ```
 

@@ -14,5 +14,10 @@ output:
     toc: true
     toc_depth: 3
 ---
+# INDONESIA
+```{r child = "pertemuan_01.Rmd"}
+```
 
-```{r c08_prob, child = "pertemuan_01.Rmd"}
+# VIETNAM  
+```{r child = "pertemuan_02.Rmd"}
+```
